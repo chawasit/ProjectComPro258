@@ -34,13 +34,15 @@ int main(int argc, const char * argv[]) {
     printf("[+] Calculating Route..\n");
     map->setNode(node->size());
     map->createMap();
+    map->init();
     map->floyd_warshall();
     std::this_thread::sleep_for(std::chrono::seconds(1));
     printf("[+] Complete!\n");
-    std::this_thread::sleep_for(std::chrono::seconds(3));
+//    std::this_thread::sleep_for(std::chrono::seconds(3));
     
 //    printer.showTag(tag);
 //    printer.showDebug();
+    printer.debugMap();
     printer.clear();
     printer.showMenu();
     

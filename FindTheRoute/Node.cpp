@@ -53,22 +53,24 @@ int Node::getGroupID(int id)
     }
 }
 
-int Node::getNodeByTag(int tag)
+std::vector<int> Node::getNodeByTag(int tag)
 {
+    std::vector<int> ret;
     for(auto it = node.begin(); it!=node.end();it++)
     {
         if(it->second.tag==tag)
-            return it->first;
+            ret.push_back(it->first);
     }
-    return -1;
+    return ret;
 }
 
-int Node::getNodeByGroup(int group)
+std::vector<int> Node::getNodeByGroup(int group)
 {
+    std::vector<int> ret;
     for(auto it = node.begin(); it!=node.end();it++)
     {
         if(it->second.group==group)
-            return it->first;
+            ret.push_back(it->first);
     }
-    return -1;
+    return ret;
 }

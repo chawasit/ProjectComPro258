@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <string>
 #include <map>
+#include <vector>
 
 struct NodeData {
     int tag,group;
@@ -26,8 +27,8 @@ public:
     bool add(int, int, int);
     int getTagID(int);
     int getGroupID(int);
-    int getNodeByTag(int);
-    int getNodeByGroup(int);
+    std::vector<int> getNodeByTag(int);
+    std::vector<int> getNodeByGroup(int);
     int isExist(int);
     int size(){ return node.size(); };
     

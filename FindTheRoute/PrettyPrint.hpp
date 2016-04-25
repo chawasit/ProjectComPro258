@@ -31,6 +31,9 @@ public:
     void showMenu();
     void clear();
     
+    
+    void debugMap();
+    
     void menuFindRoute(); // Find the route
     void menuSearch(); // Search by location
     void menuShowAll(); // show all location

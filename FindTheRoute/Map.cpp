@@ -58,7 +58,8 @@ void Map::init()
 {
     for (int i=0; i<nodes; i++) {
         for (int j=0; j<nodes; j++) {
-            map[i][j] = std::numeric_limits<int>::max();
+//            map[i][j] = std::numeric_limits<signed int>::max();
+            map[i][j] = 99999999;
             next[i][j] = j;
         }
     }
@@ -67,6 +68,7 @@ void Map::init()
         f = paths[i].from;
         t = paths[i].to;
         w = paths[i].weight;
+        printf("set edge %d %d %d\n", f, t, w);
         map[f][t] = w;
     }
 }

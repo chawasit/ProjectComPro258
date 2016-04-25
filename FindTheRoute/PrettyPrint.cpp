@@ -78,19 +78,45 @@ void PrettyPrint::menuFindRoute(){
     scanf("%d",&Start);
     printf("Please Input destination: ");
     scanf("%d",&Destination);
-    if(node->isExist(Start) and node->isExist(Destination))
+    std::vector<int> from=node->getNodeByTag(Start), to=node->getNodeByTag(Destination);
+    std::vector< std::pair<int, std::queue<int>>> result;
+    int** distance = map->getMap();
+    int current_from, current_to, sum_distance;
+    int current_group;
+    if(from.size()>0 and to.size()>0)
     {
-        std::queue<int> *route = map->getRoute(Start, Destination);
-        if(!route->size())
+        for(int i=0;i<from.size();i++)
         {
-            printf("Route ot found!");
-            return ;
+            for(int j=0;j<to.size();j++)
+            {
+                sum_distance = 0;
+                std::queue<int> *route = map->getRoute(from[i], to[j]);
+                if(!route->empty())
+                {
+                    current_from = route->front();
+                    route->pop();
+                    current_group = node->getGroupID(current_from);
+                    printf("[+] %s [%5s > ",
+                           tag->getName(node->getTagID(current_from)).c_str(),
+                           group->get(current_group).c_str());
+                }
+                while(!route->empty())
+                {
+                    current_to = route->front(); route->pop();
+//                    printf("%d->", current_from);
+                    sum_distance += distance[current_from][current_to];
+                    if(current_group!=node->getGroupID(current_to))
+                    {
+                        current_group = node->getGroupID(current_to);
+                        printf("%s [%5s > ", tag->getName(current_from).c_str(), group->get(current_group).c_str() );
+                    }
+                    current_from = current_to;
+                }
+                printf("%s\n[+] Distance %dm\n", tag->getName(current_to).c_str(), sum_distance );
+            }
         }
-        while(!route->empty())
-        {
-            printf("%d->", route->front());
-            route->pop();
-        }
+    }else{
+        printf("[-] Invalid Tag\n");
     }
 }
 
@@ -127,4 +153,21 @@ void PrettyPrint::clear()
 #else
     system("clear");
 #endif
+}
+
+
+void PrettyPrint::debugMap()
+{
+    int** m = map->getMap();
+    int** n = map->getNext();
+    int nodes = map->getNode();
+
+    for(int i=0;i<nodes;i++)
+    {
+        for (int j=0; j<nodes; j++) {
+            printf("%d ", m[i][j]);
+        }
+        printf("\n");
+    }
+
 }
