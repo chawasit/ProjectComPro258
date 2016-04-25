@@ -31,7 +31,7 @@ void PrettyPrint::showDebug(Tag * tag, Node *node, Group *group, Map *map)
     
     for(auto it=node->begin(); it!=node->end(); it++)
     {
-        printf("N[%d, tag %d, group %d]\n", it->first, it->second.first, it->second.second);
+        printf("N[%d, tag %d, group %d]\n", it->first, it->second.tag, it->second.group);
     }
     
     for(auto it=group->begin(); it!=group->end(); it++)
