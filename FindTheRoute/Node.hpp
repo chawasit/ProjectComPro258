@@ -15,7 +15,7 @@
 
 struct NodeData {
     int tag,group;
-    NodeData(int t, int g):tag(t),group(g){};
+    NodeData(int t, int g):tag(t), group(g) {};
 };
 
 class Node {

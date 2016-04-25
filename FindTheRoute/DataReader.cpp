@@ -16,7 +16,7 @@ DataReader::DataReader(std::string path)
 
 DataReader::DataReader()
 {
-    open("data.txt");
+    open("dataCMU.txt");
 }
 
 
@@ -88,7 +88,7 @@ void DataReader::getln(std::istream &in, std::string &str)
 {
     std::string temp;
     getline(in, temp);
-    while(temp.c_str()[0]=='#' or temp=="")
+    while(temp.c_str()[0]=='#' or temp=="" or temp==" ")
     {
         getline(in, temp);
     }

@@ -33,7 +33,7 @@ public:
     int** getMap(){ return map; };
     int** getNext(){ return next; };
     int getNode(){ return nodes; };
-    void setNode(int n){nodes = n;};
+    void setNode(int n){nodes = n+10;};
     
     void addPath(int, int, int); // from, to, weight
     void addPath(int, int); // from, to, weight = 0

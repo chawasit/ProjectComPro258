@@ -101,7 +101,6 @@
 54	8	5 
 55	34	5 
 56	2	5 
- 
 # [PATH] FROM, TO, WEIGHT (Both FROM TO are Node's id)
 [PATH]
 1 2 350
@@ -183,5 +182,4 @@
 25 41 0
 28 37 0
 22 54 0
-
 [END]

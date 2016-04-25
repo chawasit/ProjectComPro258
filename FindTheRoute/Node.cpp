@@ -15,7 +15,9 @@ Node::Node()
 
 bool Node::add(int id, int tag, int group)
 {
-    node[id] = NodeData(tag, group);
+    NodeData data(tag, group);
+//    node[id] = data;
+    node.insert(std::make_pair(id, data));
     return true;
 }
 
