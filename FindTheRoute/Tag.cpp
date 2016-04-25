@@ -55,8 +55,9 @@ std::vector<std::pair<int, std::string> > Tag::search(std::string text)
     verex::verex expr = verex::verex()
                         .search_one_line()
                         .start_of_line()
-                        .maybe(text)
-                        .end_of_line()
+                        .anything()
+                        .then(text)
+                        .anything()
                         .with_any_case();
     std::vector<std::pair<int, std::string> > ret;
     for(auto it=name_list.begin();it!=name_list.end();it++)

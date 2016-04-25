@@ -8,21 +8,28 @@
 
 #include "PrettyPrint.hpp"
 
+PrettyPrint::PrettyPrint(Tag* t, Node* n, Group* g, Map* m)
+{
+    tag = t;
+    node = n;
+    group = g;
+    map = m;
+}
 
 void PrettyPrint::showRoute(std::queue<int> *route)
 {
     
 }
 
-void PrettyPrint::showTag(Tag *tag)
+void PrettyPrint::showTag()
 {
     for(auto it=tag->begin(); it!=tag->end(); it++)
     {
-        printf("[%d, %s]", it->first, it->second.c_str());
+        printf("[%d, %s]\n", it->first, it->second.c_str());
     }
 }
 
-void PrettyPrint::showDebug(Tag * tag, Node *node, Group *group, Map *map)
+void PrettyPrint::showDebug()
 {
     for(auto it=tag->begin(); it!=tag->end(); it++)
     {
@@ -44,7 +51,7 @@ void PrettyPrint::showDebug(Tag * tag, Node *node, Group *group, Map *map)
 void PrettyPrint::showMenu(){
     int command;
     do{
-        printf("Please select the command.\n (1)FindRoute (2)Search (3)ShowAllPath");
+        printf("Please select the command.\n (1)FindRoute (2)Search (3)ShowAllPath\nSelect: ");
         scanf("%d",&command);
         switch (command) {
             case 1:
@@ -79,5 +86,10 @@ void PrettyPrint::menuSearch(){
     char ToFind[200];
     printf("Please Input tag name:");
     scanf("%s",ToFind);
-    
+    std::string find(ToFind);
+    std::vector<std::pair<int, std::string> > found = tag->search(find);
+    for(int i=0;i<found.size();i++)
+    {
+        printf("[%d %s] ", found[i].first, found[i].second.c_str());
+    }
 }

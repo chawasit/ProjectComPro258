@@ -18,10 +18,16 @@
 #include "Group.hpp"
 
 class PrettyPrint {
+private:
+    Tag* tag;
+    Node* node;
+    Group* group;
+    Map *map;
 public:
-    void showTag(Tag*);
+    PrettyPrint(Tag*, Node*, Group*, Map*);
+    void showTag();
     void showRoute(std::queue<int>*);
-    void showDebug(Tag*, Node*, Group*, Map*);
+    void showDebug();
     void showMenu();
     
     void menuFindRoute(); // Find the route

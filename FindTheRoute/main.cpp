@@ -22,12 +22,13 @@ int main(int argc, const char * argv[]) {
     Tag* tag = new Tag();
     Node* node = new Node();
     Group* group = new Group();
-    PrettyPrint printer;
+    PrettyPrint printer(tag, node, group, map);
     
     reader.parseData(tag, node, group, map);
     
-    printer.showDebug(tag, node, group, map);
-    
+//    printer.showTag(tag);
+    printer.showDebug();
+    printer.showMenu();
     std::cout << "END\n";
     return 0;
 }
