@@ -43,6 +43,7 @@
 		DB3957961CCC239000F0B2FC /* Group.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Group.hpp; sourceTree = "<group>"; };
 		DB39579B1CCC26A300F0B2FC /* DataReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DataReader.cpp; sourceTree = "<group>"; };
 		DB39579C1CCC26A300F0B2FC /* DataReader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DataReader.hpp; sourceTree = "<group>"; };
+		DB39579F1CCDF87500F0B2FC /* verbalexpressions.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = verbalexpressions.hpp; path = FindTheRoute/verbalexpressions.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +60,7 @@
 		DB39576B1CCA189800F0B2FC = {
 			isa = PBXGroup;
 			children = (
+				DB39579F1CCDF87500F0B2FC /* verbalexpressions.hpp */,
 				DB3957761CCA189800F0B2FC /* FindTheRoute */,
 				DB3957751CCA189800F0B2FC /* Products */,
 			);
@@ -275,6 +277,7 @@
 				DB39577D1CCA189800F0B2FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

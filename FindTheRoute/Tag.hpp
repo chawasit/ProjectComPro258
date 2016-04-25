@@ -13,6 +13,7 @@
 #include <vector>
 #include <string>
 #include <map>
+#include "verbalexpressions.hpp"
 
 class Tag {
 private:
@@ -22,6 +23,7 @@ public:
     std::string getName(int);
     bool add(int, std::string);
     int getID(std::string);
+    std::vector<std::pair<int, std::string> > search(std::string);
     
     std::map<int, std::string>::iterator begin(){ return name_list.begin(); };
     std::map<int, std::string>::iterator end(){ return name_list.end(); };
