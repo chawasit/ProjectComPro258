@@ -108,6 +108,7 @@ void DataReader::parseGroup(std::istringstream &in, Group *group)
     int id;
     std::string name;
     in >> id;
+    in.ignore();
     getline(in, name);
     group->add(id, name);
 }
@@ -117,6 +118,7 @@ void DataReader::parseTag(std::istringstream &in, Tag *tag)
     int id;
     std::string name;
     in >> id;
+    in.ignore();
     getline(in, name);
     tag->add(id, name);
 }

@@ -42,7 +42,8 @@ int main(int argc, const char * argv[]) {
     
 //    printer.showTag(tag);
 //    printer.showDebug();
-    printer.debugMap();
+    printf("Nodes %d\n", node->size());
+//    printer.debugMap();
     printer.clear();
     printer.showMenu();
     
