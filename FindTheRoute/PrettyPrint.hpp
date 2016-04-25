@@ -33,7 +33,7 @@ public:
     void showMenu();
     void clear();
     void sleep(int);
-    
+    void showCaution();
     void debugMap();
     
     void menuFindRoute(); // Find the route

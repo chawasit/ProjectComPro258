@@ -37,11 +37,12 @@ int main(int argc, const char * argv[]) {
     printer.sleep(1);
     printf("[+] Complete!\n");
     printer.sleep(1);
+    printer.showCaution();
+    printer.sleep(3);
     printer.clear();
     printer.showMenu();
     
     map->destroyMap();
     delete map, node, tag, group;
-    std::cout << "END\n";
     return 0;
 }

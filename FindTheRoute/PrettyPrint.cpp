@@ -16,11 +16,6 @@ PrettyPrint::PrettyPrint(Tag* t, Node* n, Group* g, Map* m)
     map = m;
 }
 
-void PrettyPrint::showRoute(std::queue<int> *route)
-{
-    
-}
-
 void PrettyPrint::showTag()
 {
     for(auto it=tag->begin(); it!=tag->end(); it++)
@@ -38,7 +33,9 @@ void PrettyPrint::showDebug()
     
     for(auto it=node->begin(); it!=node->end(); it++)
     {
-        printf("N[%d, tag %d, group %d]\n", it->first, it->second.tag, it->second.group);
+        printf("N[%d, tag %d, group %d]\n", it->first,
+                                it->second.tag,
+                                it->second.group);
     }
     
     for(auto it=group->begin(); it!=group->end(); it++)
@@ -51,8 +48,10 @@ void PrettyPrint::showDebug()
 void PrettyPrint::showMenu(){
     int command;
     do{
-        printf("--------------------------------------------------------------\n\n");
-        printf(" Please select the command.\n (1)FindRoute (2)Search Location (3)Show All Location (0)Exit\nSelect: ");
+        printf("\n--------------------------------------------------------------\n\n");
+        printf(" Please select the command.\n "
+               "(1)FindRoute (2)Search Location (3)Show All Location (0)Exit\n"
+               "[?] Select: ");
         scanf("%d", &command);
         printf("--------------------------------------------------------------\n\n");
         switch (command) {
@@ -121,6 +120,14 @@ void PrettyPrint::menuFindRoute(){
                tag->getName(Start).c_str(),
                tag->getName(Destination).c_str());
         
+        route = min_route;
+        while(!route.empty())
+        {
+            printf("%d->", route.front());
+            route.pop();
+        }
+        printf("\n\n");
+               
         if(!min_route.empty())
         {
             current_from = min_route.front();
@@ -133,7 +140,6 @@ void PrettyPrint::menuFindRoute(){
         while(!min_route.empty())
         {
             current_to = min_route.front(); min_route.pop();
-            //                    printf("%d->", current_from);
             if(current_group!=node->getGroupID(current_to))
             {
                 current_group = node->getGroupID(current_to);
@@ -154,7 +160,7 @@ void PrettyPrint::menuFindRoute(){
 
 void PrettyPrint::menuSearch(){
     char ToFind[200];
-    printf("[?] Please Input tag name:");
+    printf("[?] Please Input key word: ");
     scanf("%s",ToFind);
     std::string find(ToFind);
     std::vector<std::pair<int, std::string> > found = tag->search(find);
@@ -204,10 +210,30 @@ void PrettyPrint::debugMap()
         }
         printf("\n");
     }
+    
+    for(int i=1;i<=nodes;i++)
+    {
+        for (int j=1; j<=nodes; j++) {
+            if(m[i][j]==99999999)
+                printf("- ");
+            else
+                printf("%d ", n[i][j]);
+        }
+        printf("\n");
+    }
 
 }
 
 void PrettyPrint::sleep(int second)
 {
     std::this_thread::sleep_for(std::chrono::seconds(second));
+}
+
+
+void PrettyPrint::showCaution()
+{
+    printf("##############################################################\n");
+    printf("#    [CAUTION] Use at your own RISK !                        #\n");
+    printf("##############################################################\n");
+    
 }
