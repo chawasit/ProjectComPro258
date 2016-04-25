@@ -41,7 +41,39 @@ void PrettyPrint::showDebug(Tag * tag, Node *node, Group *group, Map *map)
     
 }
 
-void PrettyPrint::menuShow()
-{
-    std::cout << "test";
+void PrettyPrint::showMenu(){
+    int command;
+    do{
+        printf("Please select the command.\n (1)FindRoute (2)Search (3)ShowAllPath");
+        scanf("%d",&command);
+        switch (command) {
+            case 1:
+                menuFindRoute();
+                break;
+            case 2:
+                menuSearch();
+                break;
+            case 3:
+                menuShow();
+                break;
+            default:
+                printf("Invalid command.\n");
+                break;
+        }
+        
+    }while(command != 0);
+}
+
+void PrettyPrint::menuShow(){
+}
+
+void PrettyPrint::menuFindRoute(){
+    int Start,Destination;
+    scanf("%d",&Start);
+    scanf("%d",&Destination);
+    
+}
+
+void PrettyPrint::menuSearch(){
+    
 }
