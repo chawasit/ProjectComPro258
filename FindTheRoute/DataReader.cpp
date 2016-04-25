@@ -38,11 +38,11 @@ void DataReader::parseData(Tag *tag, Node *node, Group *group, Map *map)
 {
     io.seekg(std::ios::beg);
     std::string line;
-    while(getline(io, line))
+    while(getln(io, line))
     {
         if(line == "[NODE]")
         {
-            getline(io, line);
+            getln(io, line);
             while(line!="[END]")
             {
                 std::istringstream stream(line);
@@ -52,47 +52,48 @@ void DataReader::parseData(Tag *tag, Node *node, Group *group, Map *map)
         }
         else if(line == "[TAG]")
         {
-            getline(io, line);
+            getln(io, line);
             while(line!="[END]")
             {
                 std::istringstream stream(line);
                 parseTag(stream, tag);
-                getline(io, line);
+                getln(io, line);
             }
         }
         else if(line == "[GROUP]")
         {
-            getline(io, line);
+            getln(io, line);
             while(line!="[END]")
             {
                 std::istringstream stream(line);
                 parseGroup(stream, group);
-                getline(io, line);
+                getln(io, line);
             }
         }
         else if(line == "[PATH]")
         {
-            getline(io, line);
+            getln(io, line);
             while(line!="[END]")
             {
                 std::istringstream stream(line);
                 parsePath(stream, map);
-                getline(io, line);
+                getln(io, line);
             }
         }
         
     }
 }
 
-void DataReader::getln(std::istream &in, std::string &str)
+bool DataReader::getln(std::istream &in, std::string &str)
 {
     std::string temp;
     getline(in, temp);
     while(temp.c_str()[0]=='#' or temp=="" or temp==" ")
     {
-        getline(in, temp);
+        if(!getline(in, temp)) return false;
     }
     str = temp;
+    return true;
 }
 
 void DataReader::parsePath(std::istringstream &in, Map *map)

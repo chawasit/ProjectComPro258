@@ -32,6 +32,6 @@ public:
     void parseNode(std::istringstream&, Node *);
     void parseGroup(std::istringstream&, Group *);
     void parsePath(std::istringstream&, Map *);
-    void getln(std::istream&, std::string&);
+    bool getln(std::istream&, std::string&);
 };
 #endif /* DataReader_hpp */

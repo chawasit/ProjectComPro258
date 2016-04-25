@@ -26,7 +26,6 @@ int main(int argc, const char * argv[]) {
     
     reader.parseData(tag, node, group, map);
     
-    printer.showTag(tag);
     printer.showDebug(tag, node, group, map);
     
     std::cout << "END\n";
