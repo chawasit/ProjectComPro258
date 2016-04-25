@@ -69,12 +69,15 @@ void PrettyPrint::menuShow(){
 
 void PrettyPrint::menuFindRoute(){
     int Start,Destination;
-    scanf("%d %d",&Start,&Destination);
-    
+    printf("Please Input where to start:");
+    scanf("%d",&Start);
+    printf("Please Input destination:");
+    scanf("%d",&Destination);
 }
 
 void PrettyPrint::menuSearch(){
     char ToFind[200];
-    scanf("%s",&ToFind);
+    printf("Please Input tag name:");
+    scanf("%s",ToFind);
     
 }
