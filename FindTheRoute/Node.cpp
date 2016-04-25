@@ -21,6 +21,16 @@ bool Node::add(int id, int tag, int group)
     return true;
 }
 
+int Node::isExist(int id)
+{
+    auto it = node.find(id);
+    if(node.end()!=it)
+    {
+        return it->first;
+    }
+    return -1;
+}
+
 int Node::getTagID(int id)
 {
     auto it = node.find(id);

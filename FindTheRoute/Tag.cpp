@@ -69,3 +69,13 @@ std::vector<std::pair<int, std::string> > Tag::search(std::string text)
     }
     return ret;
 }
+
+std::vector<std::pair<int, std::string> > Tag::all()
+{
+    std::vector<std::pair<int, std::string> > ret;
+    for(auto it=name_list.begin();it!=name_list.end();it++)
+    {
+        ret.push_back(std::make_pair(it->first, it->second));
+    }
+    return ret;
+}

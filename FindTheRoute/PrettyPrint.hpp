@@ -29,10 +29,11 @@ public:
     void showRoute(std::queue<int>*);
     void showDebug();
     void showMenu();
+    void clear();
     
     void menuFindRoute(); // Find the route
     void menuSearch(); // Search by location
-    void menuShow(); // show all location
+    void menuShowAll(); // show all location
 };
 
 #endif /* PrettyPrint_hpp */

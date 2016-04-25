@@ -97,6 +97,7 @@ bool Map::isCalculated()
 std::queue<int>* Map::getRoute(int from, int to)
 {
     std::queue<int>* route = new std::queue<int>;
+    if(!isCalculated()) return route;
     if(next[from][to] == -1)
         return route;
     route->push(from);

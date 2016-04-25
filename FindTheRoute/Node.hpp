@@ -28,6 +28,8 @@ public:
     int getGroupID(int);
     int getNodeByTag(int);
     int getNodeByGroup(int);
+    int isExist(int);
+    int size(){ return node.size(); };
     
     std::map<int, NodeData >::iterator begin(){ return node.begin(); };
     std::map<int, NodeData >::iterator end(){ return node.end(); };

@@ -51,7 +51,7 @@ void PrettyPrint::showDebug()
 void PrettyPrint::showMenu(){
     int command;
     do{
-        printf("Please select the command.\n (1)FindRoute (2)Search (3)ShowAllPath\nSelect: ");
+        printf("Please select the command.\n (1)FindRoute (2)Search Location (3)Show All Location (0)Exit\nSelect: ");
         scanf("%d",&command);
         switch (command) {
             case 1:
@@ -61,7 +61,7 @@ void PrettyPrint::showMenu(){
                 menuSearch();
                 break;
             case 3:
-                menuShow();
+                menuShowAll();
                 break;
             default:
                 printf("Invalid command.\n");
@@ -69,17 +69,29 @@ void PrettyPrint::showMenu(){
         }
         
     }while(command != 0);
-}
-
-void PrettyPrint::menuShow(){
+    printf("By bye :D");
 }
 
 void PrettyPrint::menuFindRoute(){
     int Start,Destination;
-    printf("Please Input where to start:");
+    printf("Please Input where to start: ");
     scanf("%d",&Start);
-    printf("Please Input destination:");
+    printf("Please Input destination: ");
     scanf("%d",&Destination);
+    if(node->isExist(Start) and node->isExist(Destination))
+    {
+        std::queue<int> *route = map->getRoute(Start, Destination);
+        if(!route->size())
+        {
+            printf("Route ot found!");
+            return ;
+        }
+        while(!route->empty())
+        {
+            printf("%d->", route->front());
+            route->pop();
+        }
+    }
 }
 
 void PrettyPrint::menuSearch(){
@@ -90,6 +102,29 @@ void PrettyPrint::menuSearch(){
     std::vector<std::pair<int, std::string> > found = tag->search(find);
     for(int i=0;i<found.size();i++)
     {
-        printf("[%d %s] ", found[i].first, found[i].second.c_str());
+        if(i%2==0 and i>0){ printf("\n"); }
+        printf("[%3d] %-25s ", found[i].first, found[i].second.c_str());
     }
+    printf("\n");
+}
+
+void PrettyPrint::menuShowAll()
+{
+    std::vector<std::pair<int, std::string> > found = tag->all();
+    for(int i=0;i<found.size();i++)
+    {
+        if(i%2==0 and i>0){ printf("\n"); }
+        printf("[%3d] %-25s", found[i].first, found[i].second.c_str());
+    }
+    printf("\n");
+}
+
+
+void PrettyPrint::clear()
+{
+#ifdef OS_WINDOWS
+    system("cls");
+#else
+    system("clear");
+#endif
 }

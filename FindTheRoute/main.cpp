@@ -15,8 +15,11 @@
 #include "Tag.hpp"
 #include "Node.hpp"
 #include "Group.hpp"
+#include <chrono>
+#include <thread>
 
 int main(int argc, const char * argv[]) {
+    printf("[+] Initialing..\n");
     DataReader reader;
     Map* map = new Map();
     Tag* tag = new Tag();
@@ -24,11 +27,25 @@ int main(int argc, const char * argv[]) {
     Group* group = new Group();
     PrettyPrint printer(tag, node, group, map);
     
+    printf("[+] Loading Data..\n");
     reader.parseData(tag, node, group, map);
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    
+    printf("[+] Calculating Route..\n");
+    map->setNode(node->size());
+    map->createMap();
+    map->floyd_warshall();
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    printf("[+] Complete!\n");
+    std::this_thread::sleep_for(std::chrono::seconds(3));
     
 //    printer.showTag(tag);
-    printer.showDebug();
+//    printer.showDebug();
+    printer.clear();
     printer.showMenu();
+    
+    map->destroyMap();
+    delete map, node, tag, group, printer;
     std::cout << "END\n";
     return 0;
 }
