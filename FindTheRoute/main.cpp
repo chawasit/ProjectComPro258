@@ -15,8 +15,6 @@
 #include "Tag.hpp"
 #include "Node.hpp"
 #include "Group.hpp"
-#include <chrono>
-#include <thread>
 
 int main(int argc, const char * argv[]) {
     printf("[+] Initialing..\n");
@@ -29,26 +27,21 @@ int main(int argc, const char * argv[]) {
     
     printf("[+] Loading Data..\n");
     reader.parseData(tag, node, group, map);
-    std::this_thread::sleep_for(std::chrono::seconds(1));
+    printer.sleep(1);
     
     printf("[+] Calculating Route..\n");
     map->setNode(node->size());
     map->createMap();
     map->init();
     map->floyd_warshall();
-    std::this_thread::sleep_for(std::chrono::seconds(1));
+    printer.sleep(1);
     printf("[+] Complete!\n");
-//    std::this_thread::sleep_for(std::chrono::seconds(3));
-    
-//    printer.showTag(tag);
-//    printer.showDebug();
-    printf("Nodes %d\n", node->size());
-//    printer.debugMap();
+    printer.sleep(1);
     printer.clear();
     printer.showMenu();
     
     map->destroyMap();
-    delete map, node, tag, group, printer;
+    delete map, node, tag, group;
     std::cout << "END\n";
     return 0;
 }

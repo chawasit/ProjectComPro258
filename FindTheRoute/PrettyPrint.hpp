@@ -16,6 +16,8 @@
 #include "Map.hpp"
 #include "Node.hpp"
 #include "Group.hpp"
+#include <chrono>
+#include <thread>
 
 class PrettyPrint {
 private:
@@ -30,7 +32,7 @@ public:
     void showDebug();
     void showMenu();
     void clear();
-    
+    void sleep(int);
     
     void debugMap();
     

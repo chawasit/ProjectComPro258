@@ -24,11 +24,14 @@ Map::~Map()
 
 void Map::addPath(int from, int to, int weight)
 {
-    Edge add(from, to, weight);
-    paths.push_back(add);
     if(weight==0)
     {
-        Edge add(to, from, weight);
+        Edge add(to, from, 5);
+        paths.push_back(add);
+        Edge add2(from, to, 5);
+        paths.push_back(add2);
+    }else{
+        Edge add(from, to, weight);
         paths.push_back(add);
     }
 }
@@ -103,17 +106,17 @@ bool Map::isCalculated()
     return calculated;
 }
 
-std::queue<int>* Map::getRoute(int from, int to)
+std::queue<int> Map::getRoute(int from, int to)
 {
-    std::queue<int>* route = new std::queue<int>;
+    std::queue<int> route;
     if(!isCalculated()) return route;
     if(next[from][to] == -1)
         return route;
-    route->push(from);
+    route.push(from);
     while(from!=to)
     {
         from = next[from][to];
-        route->push(from);
+        route.push(from);
     }
     return route;
 }

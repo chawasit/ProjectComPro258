@@ -45,7 +45,7 @@ public:
     void floyd_warshall();
     
     bool isCalculated();
-    std::queue<int>* getRoute(int, int);
+    std::queue<int> getRoute(int, int);
 };
 
 
