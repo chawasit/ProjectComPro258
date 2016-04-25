@@ -15,7 +15,7 @@ Node::Node()
 
 bool Node::add(int id, int tag, int group)
 {
-    node[id] = std::pair<int, int>(tag, group);
+    node[id] = NodeData(tag, group);
     return true;
 }
 
@@ -24,7 +24,7 @@ int Node::getTagID(int id)
     auto it = node.find(id);
     if(it!=node.end())
     {
-        return it->second.first;
+        return it->second.tag;
     }else{
         return -1;
     }
@@ -35,7 +35,7 @@ int Node::getGroupID(int id)
     auto it = node.find(id);
     if(it!=node.end())
     {
-        return it->second.second;
+        return it->second.group;
     }else{
         return -1;
     }
@@ -45,7 +45,17 @@ int Node::getNodeByTag(int tag)
 {
     for(auto it = node.begin(); it!=node.end();it++)
     {
-        if(it->second.first==tag)
+        if(it->second.tag==tag)
+            return it->first;
+    }
+    return -1;
+}
+
+int Node::getNodeByGroup(int group)
+{
+    for(auto it = node.begin(); it!=node.end();it++)
+    {
+        if(it->second.group==group)
             return it->first;
     }
     return -1;

@@ -13,9 +13,14 @@
 #include <string>
 #include <map>
 
+struct NodeData {
+    int tag,group;
+    NodeData(int t, int g):tag(t),group(g){};
+};
+
 class Node {
 private:
-    std::map<int, std::pair<int, int> > node;
+    std::map<int, NodeData > node;
 public:
     Node();
     bool add(int, int, int);
@@ -24,7 +29,7 @@ public:
     int getNodeByTag(int);
     int getNodeByGroup(int);
     
-    std::map<int, std::pair<int, int>>::iterator begin(){ return node.begin(); };
-    std::map<int, std::pair<int, int>>::iterator end(){ return node.end(); };
+    std::map<int, NodeData >::iterator begin(){ return node.begin(); };
+    std::map<int, NodeData >::iterator end(){ return node.end(); };
 };
 #endif /* Node_hpp */

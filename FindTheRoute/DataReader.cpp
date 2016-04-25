@@ -88,10 +88,11 @@ void DataReader::getln(std::istream &in, std::string &str)
 {
     std::string temp;
     getline(in, temp);
-    if(temp.c_str()[0]!='#')
+    while(temp.c_str()[0]=='#' or temp=="")
     {
-        str = temp;
+        getline(in, temp);
     }
+    str = temp;
 }
 
 void DataReader::parsePath(std::istringstream &in, Map *map)
