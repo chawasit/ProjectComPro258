@@ -75,5 +75,7 @@ void PrettyPrint::menuFindRoute(){
 }
 
 void PrettyPrint::menuSearch(){
+    char ToFind[200];
+    scanf("%s",&ToFind);
     
 }
