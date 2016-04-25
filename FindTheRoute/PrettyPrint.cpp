@@ -69,8 +69,7 @@ void PrettyPrint::menuShow(){
 
 void PrettyPrint::menuFindRoute(){
     int Start,Destination;
-    scanf("%d",&Start);
-    scanf("%d",&Destination);
+    scanf("%d %d",&Start,&Destination);
     
 }
 
