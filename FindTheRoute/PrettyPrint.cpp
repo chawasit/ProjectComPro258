@@ -40,3 +40,8 @@ void PrettyPrint::showDebug(Tag * tag, Node *node, Group *group, Map *map)
     }
     
 }
+
+void PrettyPrint::menuShow()
+{
+    std::cout << "test";
+}
