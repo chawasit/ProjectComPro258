@@ -21,6 +21,8 @@ public:
     bool add(int, int, int);
     int getTagID(int);
     int getGroupID(int);
+    int getNodeByTag(int);
+    int getNodeByGroup(int);
     
     std::map<int, std::pair<int, int>>::iterator begin(){ return node.begin(); };
     std::map<int, std::pair<int, int>>::iterator end(){ return node.end(); };

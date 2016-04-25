@@ -40,3 +40,13 @@ int Node::getGroupID(int id)
         return -1;
     }
 }
+
+int Node::getNodeByTag(int tag)
+{
+    for(auto it = node.begin(); it!=node.end();it++)
+    {
+        if(it->second.first==tag)
+            return it->first;
+    }
+    return -1;
+}
