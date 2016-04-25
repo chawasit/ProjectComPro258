@@ -22,6 +22,11 @@ public:
     void showTag(Tag*);
     void showRoute(std::queue<int>*);
     void showDebug(Tag*, Node*, Group*, Map*);
+    void showMenu();
+    
+    void menuFindRoute(); // Find the route
+    void menuSearch(); // Search by location
+    void menuShow(); // show all location
 };
 
 #endif /* PrettyPrint_hpp */
