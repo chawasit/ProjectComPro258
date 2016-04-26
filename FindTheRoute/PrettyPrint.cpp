@@ -93,10 +93,10 @@ void PrettyPrint::menuFindRoute(){
     int current_from, current_to, route_distance;
     int current_group;
     
-    for(int i=0;i<from.size();i++)
-        printf("FROM %d %s\n", from[i], tag->getName(node->getTagID(from[i])).c_str());
-    for(int j=0;j<to.size();j++)
-        printf("TO %d %s\n", to[j], tag->getName(node->getTagID(to[j])).c_str());
+//    for(int i=0;i<from.size();i++)
+//        printf("FROM %d %s\n", from[i], tag->getName(node->getTagID(from[i])).c_str());
+//    for(int j=0;j<to.size();j++)
+//        printf("TO %d %s\n", to[j], tag->getName(node->getTagID(to[j])).c_str());
     
     int min_distance=99999999;
     std::queue<int> min_route;
@@ -120,14 +120,14 @@ void PrettyPrint::menuFindRoute(){
                tag->getName(Start).c_str(),
                tag->getName(Destination).c_str());
         
-        route = min_route;
-        while(!route.empty())
-        {
-            printf("%d->", route.front());
-            route.pop();
-        }
-        printf("\n\n");
-               
+//        route = min_route;
+//        while(!route.empty())
+//        {
+//            printf("%d->", route.front());
+//            route.pop();
+//        }
+//        printf("\n\n");
+        
         if(!min_route.empty())
         {
             current_from = min_route.front();
@@ -186,7 +186,7 @@ void PrettyPrint::menuShowAll()
 
 void PrettyPrint::clear()
 {
-#ifdef OS_WINDOWS
+#ifdef _WIN32
     system("cls");
 #else
     system("clear");
